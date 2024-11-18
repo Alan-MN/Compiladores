@@ -1,4 +1,4 @@
-from Token import  Token
+from .Token import Token
 import re
 def validaToken(palavra, posicao):
     value = palavra
@@ -104,7 +104,11 @@ def formataLinha(linha):
 
 def analiseLexica():
     lista_tokens_validados = []
-    arquivo = open('input.txt','r')
+    try:
+        arquivo = open('./source.txt', 'r')
+    except:
+        raise Exception('No input file found')
+
     n_linha = 1
     linhas = arquivo.readlines()
     linhas[-1] += ' ETX'
